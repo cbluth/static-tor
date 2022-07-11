@@ -4,8 +4,8 @@ set -e
 function build()
 {
     docker build \
-        -t tmp:build \
-        -f build.Dockerfile \
+        -t tor:tmp \
+        -f tor.Dockerfile \
         .
 }
 

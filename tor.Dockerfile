@@ -115,7 +115,12 @@ RUN git clone \
     popd
 
 FROM docker.io/library/ubuntu:22.04
+
+RUN mkdir -p /usr/local/var/lib/tor && \
+    chmod 700 /usr/local/var/lib/tor
 COPY --from=build \
     /usr/local/bin/* /usr/local/bin/
 COPY --from=build \
     /usr/local/lib/torsocks /usr/local/lib/torsocks
+
+ENTRYPOINT [ "tor" ]

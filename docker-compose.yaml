@@ -1,0 +1,17 @@
+---
+version: "3"
+services:
+
+  # nginx
+  nginx:
+    image: docker.io/library/nginx:latest
+
+  # tor
+  tor:
+    image: tor
+    build:
+      context: .
+      dockerfile: tor.Dockerfile
+    volumes:
+    - ./data:/usr/local/var/lib/tor
+    - ./torrc.example:/usr/local/etc/tor/torrc:ro
